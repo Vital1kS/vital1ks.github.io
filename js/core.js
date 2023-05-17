@@ -1,31 +1,32 @@
-let mainValue = new Decimal(10);
-let level1Value = new Decimal(0);
-let level2Value = new Decimal(0);
-let level3Value = new Decimal(0);
-let level4Value = new Decimal(0);
-let level5Value = new Decimal(0);
-let level6Value = new Decimal(0);
+let mainValue;
+let level1Value;
+let level2Value;
+let level3Value;
+let level4Value;
+let level5Value;
+let level6Value;
 
-let level1Count = new Decimal(0);
-let level2Count = new Decimal(0);
-let level3Count = new Decimal(0);
-let level4Count = new Decimal(0);
-let level5Count = new Decimal(0);
-let level6Count = new Decimal(0);
-let timeIntervalCount = new Decimal(0);
+let level1Count
+let level2Count;
+let level3Count
+let level4Count;
+let level5Count;
+let level6Count;
+let timeIntervalCount;
 
-let level1Cost = new Decimal(10);
-let level2Cost = new Decimal(100);
-let level3Cost = new Decimal(1000);
-let level4Cost = new Decimal(10000);
-let level5Cost = new Decimal(100000);
-let level6Cost = new Decimal(1000000);
-let timeIntervalCost = new Decimal(100);
+let level1Cost;
+let level2Cost;
+let level3Cost;
+let level4Cost;
+let level5Cost;
+let level6Cost;
+let timeIntervalCost;
 
-let interval = new Decimal(1000);
-let absoluteIncome=new Decimal(0);
-let relativeIncome=new Decimal(0);
+let interval;
+let absoluteIncome;
+let relativeIncome;
 let ticker;
+let saver;
 function buyUpgrade(event){
     let level = event.currentTarget.level;
     let costValue = getCost(level);
@@ -45,6 +46,7 @@ function buyUpgrade(event){
     }
 }
 function initialize(){
+    initData();
     for(let i =1; i<=6;i++){
         let levelButton = document.getElementById("level"+i+"Button");
         levelButton.addEventListener("click",buyUpgrade);
@@ -52,6 +54,7 @@ function initialize(){
     }
     let timeIntervalButton = document.getElementById("timeIntervalButton");
     timeIntervalButton.addEventListener("click",buyTimeInterval);
+    loadData();
     startTicker();
 }
 function increaseValue(level){
@@ -99,7 +102,7 @@ function makeAddition(){
     mainValue=mainValue.plus(level5Value);
     mainValue=mainValue.plus(level6Value);
     document.getElementById("mainValue").innerText=getString(mainValue);    
-    
+    saveData();
 }
 function getString(value){
     if(value.gt("1e7")){
@@ -134,12 +137,68 @@ function increaseCost(level){
 }
 function getCost(level){
     switch (level){
-        case 1: ;return level1Cost;
-        case 2: ;return level2Cost;
-        case 3: ;return level3Cost;
-        case 4: ;return level4Cost;
-        case 5: ;return level5Cost;
-        case 6: ;return level6Cost;
+        case 1: return level1Cost;
+        case 2: return level2Cost;
+        case 3: return level3Cost;
+        case 4: return level4Cost;
+        case 5: return level5Cost;
+        case 6: return level6Cost;
+        default: return undefined;
+    }
+}
+function getValue(level){
+    
+    switch (level){
+        case 1: return level1Value;
+        case 2: return level2Value;
+        case 3: return level3Value;
+        case 4: return level4Value;
+        case 5: return level5Value;
+        case 6: return level6Value;
+        default: return undefined;
+    }
+}
+function getCount(level){
+    switch (level){
+        case 1: return level1Count;
+        case 2: return level2Count;
+        case 3: return level3Count;
+        case 4: return level4Count;
+        case 5: return level5Count;
+        case 6: return level6Count;
+        default: return undefined;
+    }
+}
+function setCost(level, value){
+    switch (level){
+        case 1: level1Cost = value;return level1Cost;
+        case 2: level2Cost = value;return level2Cost;
+        case 3: level3Cost = value;return level3Cost;
+        case 4: level4Cost = value;return level4Cost;
+        case 5: level5Cost = value;return level5Cost;
+        case 6: level6Cost = value;return level6Cost;
+        default: return undefined;
+    }
+}
+function setValue(level,value){
+    switch (level){
+        case 1: level1Value = value;return level1Value;
+        case 2: level2Value = value;return level2Value;
+        case 3: level3Value = value;return level3Value;
+        case 4: level4Value = value;return level4Value;
+        case 5: level5Value = value;return level5Value;
+        case 6: level6Value = value;return level6Value;
+        default: return undefined;
+    }
+}
+function setCount(level,value){
+    switch (level){
+        case 1: level1Count=value; return level1Count;
+        case 2: level2Count=value;return level2Count;
+        case 3: level3Count=value;return level3Count;
+        case 4: level4Count=value;return level4Count;
+        case 5: level5Count=value;return level5Count;
+        case 6: level6Count=value;return level6Count;
         default: return undefined;
     }
 }
@@ -170,4 +229,93 @@ function buyTimeInterval(){
         calculateIncome();
         refreshTicker();}
     }
+}
+function saveData(){
+    for(let i = 1;i<=6;i++){
+        localStorage.setItem("level"+i+"Value",getValue(i));
+        localStorage.setItem("level"+i+"Count",getCount(i));
+        localStorage.setItem("level"+i+"Cost",getCost(i));
+    }
+    localStorage.setItem("interval",interval);
+    localStorage.setItem("timeIntervalCount",timeIntervalCount);
+    localStorage.setItem("timeIntervalCost",timeIntervalCost);
+    localStorage.setItem("absoluteIncome",absoluteIncome);
+    localStorage.setItem("relativeIncome",relativeIncome);
+    localStorage.setItem("mainValue",mainValue);
+}
+function loadData(){
+    if(localStorage.getItem("mainValue")==null)
+    return;
+    for(let i = 1;i<=6;i++){
+        setValue(i,new Decimal(localStorage.getItem("level"+i+"Value")));
+        setCount(i,new Decimal(localStorage.getItem("level"+i+"Count")));
+        setCost(i,new Decimal(localStorage.getItem("level"+i+"Cost")));
+    }
+    interval = new Decimal(localStorage.getItem("interval"));
+    timeIntervalCount = new Decimal(localStorage.getItem("timeIntervalCount"));
+    timeIntervalCost = new Decimal(localStorage.getItem("timeIntervalCost"));
+    absoluteIncome = new Decimal(localStorage.getItem("absoluteIncome"));
+    relativeIncome = new Decimal(localStorage.getItem("relativeIncome"));
+    mainValue = new Decimal(localStorage.getItem("mainValue"));
+    refreshText();
+}
+function refreshText(){
+    for(let i = 1;i<=6;i++){
+        let levelValue = document.getElementById("level"+i+"Value");
+        let levelCount = document.getElementById("level"+i+"CountText");
+        let levelCost = document.getElementById("level"+i+"CostText");
+        let value = getValue(i);
+        let count = getCount(i);
+        let cost = getCost(i);
+        levelValue.innerText = getString(value);
+        levelCount.innerText = getString(count);
+        levelCost.innerText = getString(cost);
+    }
+    let intervalText = document.getElementById("timeIntervalValue");
+    let intervalCountText = document.getElementById("timeIntervalCountText");
+    let intervalCostText = document.getElementById("timeIntervalCostText");
+    let mainValueText = document.getElementById("mainValue");
+    intervalText.innerText=getString(interval);
+    intervalCountText.innerText=getString(timeIntervalCount);
+    intervalCostText.innerText=getString(timeIntervalCost);
+    mainValueText.innerText=getString(mainValue);
+    calculateIncome();
+}
+function reset(){
+    if(confirm("Are you shure you want to delete ALL data?")){
+        stopTicker()
+        localStorage.clear();
+        initData();
+        refreshText();
+        startTicker();
+    }
+}
+function initData(){
+    mainValue = new Decimal(10);
+ level1Value = new Decimal(0);
+ level2Value = new Decimal(0);
+ level3Value = new Decimal(0);
+ level4Value = new Decimal(0);
+ level5Value = new Decimal(0);
+ level6Value = new Decimal(0);
+
+ level1Count = new Decimal(0);
+ level2Count = new Decimal(0);
+ level3Count = new Decimal(0);
+ level4Count = new Decimal(0);
+ level5Count = new Decimal(0);
+ level6Count = new Decimal(0);
+ timeIntervalCount = new Decimal(0);
+
+ level1Cost = new Decimal(10);
+ level2Cost = new Decimal(100);
+ level3Cost = new Decimal(1000);
+ level4Cost = new Decimal(10000);
+ level5Cost = new Decimal(100000);
+ level6Cost = new Decimal(1000000);
+ timeIntervalCost = new Decimal(100);
+
+ interval = new Decimal(1000);
+ absoluteIncome=new Decimal(0);
+ relativeIncome=new Decimal(0);
 }

@@ -10,3 +10,8 @@ body{
     width: 10em;
     height: 2em;
 }
+#resetButton{
+    margin-top: 10em;
+    background-color: rgb(194, 3, 3);
+    border-color: #760404;
+}
