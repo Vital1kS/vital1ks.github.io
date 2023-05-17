@@ -1,0 +1,12 @@
+body{
+    background: #000;
+    color: #fff;
+}
+#mainValue{
+    font-size: 3em;
+}
+.buyButton{
+    font-size: 1em;
+    width: 10em;
+    height: 2em;
+}
