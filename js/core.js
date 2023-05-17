@@ -31,18 +31,12 @@ function buyUpgrade(event){
     let level = event.currentTarget.level;
     let costValue = getCost(level);
     if(mainValue.gte(costValue)){
-        let currentValueText = document.getElementById("mainValue");
-        let countValueText = document.getElementById("level"+level+"CountText");
-        let costValueText = document.getElementById("level"+level+"CostText");
-        let currentValue = mainValue;
-        let count = increaseCount(level);
         mainValue = mainValue.minus(costValue);
-        currentValueText.innerText = getString(mainValue);
-        countValueText.innerText = getString(count);
         costValue = increaseCost(level);
-        costValueText.innerText = getString(costValue);
+        increaseCount(level);
         increaseValue(level);
         calculateIncome();
+        refreshText();
     }
 }
 function initialize(){
@@ -58,30 +52,23 @@ function initialize(){
     startTicker();
 }
 function increaseValue(level){
-    let valueText = document.getElementById("level"+level+"Value");
     if(level == 1){
         level1Value = level1Count;
-        valueText.innerText=getString(level1Value);
     }
     else if(level == 2){
         level2Value = level2Count.pow(2);
-        valueText.innerText=getString(level2Value);
     }
     else if(level == 3){
         level3Value = level3Count.pow(3);
-        valueText.innerText=getString(level3Value);
     }
     else if(level == 4){
         level4Value = level4Count.pow(4);
-        valueText.innerText=getString(level4Value);
     }
     else if(level == 5){
         level5Value = level5Count.pow(5);
-        valueText.innerText=getString(level5Value);
     }
     else if(level == 6){
         level6Value = level6Count.pow(6);
-        valueText.innerText=getString(level6Value);
     }
 }
 function refreshTicker(){
@@ -101,7 +88,7 @@ function makeAddition(){
     mainValue=mainValue.plus(level4Value);
     mainValue=mainValue.plus(level5Value);
     mainValue=mainValue.plus(level6Value);
-    document.getElementById("mainValue").innerText=getString(mainValue);    
+    refreshText();
     saveData();
 }
 function getString(value){
@@ -211,23 +198,22 @@ function calculateIncome(){
     absoluteIncome = absoluteIncome.plus(level5Value);
     absoluteIncome = absoluteIncome.plus(level6Value);
     relativeIncome = absoluteIncome.div(interval.div(1000));
-    document.getElementById("incomeValueText").innerHTML = getString(relativeIncome);
+    refreshText();
 }
 function buyTimeInterval(){
     if(mainValue.gte(timeIntervalCost)){
         if(interval.gt(1)){
-        mainValue = mainValue.minus(timeIntervalCost);
-        timeIntervalCount = timeIntervalCount.plus(1);
-        interval = interval.mul(0.9);
-        timeIntervalCost = timeIntervalCost.mul(10);
-        let timeIntervalCountText = document.getElementById("timeIntervalCountText");
-        let timeIntervalCostText = document.getElementById("timeIntervalCostText");
-        let timeIntervalValueText = document.getElementById("timeIntervalValue");
-        timeIntervalCostText.innerText=timeIntervalCost;
-        timeIntervalCountText.innerText=timeIntervalCount;
-        timeIntervalValueText.innerText=interval;
-        calculateIncome();
-        refreshTicker();}
+            mainValue = mainValue.minus(timeIntervalCost);
+            timeIntervalCount = timeIntervalCount.plus(1);
+            interval = interval.mul(0.9);
+            timeIntervalCost = timeIntervalCost.mul(10);
+            timeIntervalCostText.innerText=getString(timeIntervalCost);
+            timeIntervalCountText.innerText=getString(timeIntervalCount);
+            timeIntervalValueText.innerText=getString(interval);
+            calculateIncome();
+            refreshTicker();
+            refreshText();
+        }
     }
 }
 function saveData(){
@@ -275,11 +261,12 @@ function refreshText(){
     let intervalCountText = document.getElementById("timeIntervalCountText");
     let intervalCostText = document.getElementById("timeIntervalCostText");
     let mainValueText = document.getElementById("mainValue");
+    let relativeIncomeText = document.getElementById("incomeValue");
     intervalText.innerText=getString(interval);
     intervalCountText.innerText=getString(timeIntervalCount);
     intervalCostText.innerText=getString(timeIntervalCost);
     mainValueText.innerText=getString(mainValue);
-    calculateIncome();
+    relativeIncomeText.innerText=getString(relativeIncome);
 }
 function reset(){
     if(confirm("Are you shure you want to delete ALL data?")){
