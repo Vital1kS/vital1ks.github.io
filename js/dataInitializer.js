@@ -1,5 +1,5 @@
 function initData(){
-    mainValue = new Decimal(100000000);
+    mainValue = new Decimal(10);
  level1Value = new Decimal(0);
  level2Value = new Decimal(0);
  level3Value = new Decimal(0);
