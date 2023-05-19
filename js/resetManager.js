@@ -1,8 +1,9 @@
 function reset(){
-    if(confirm("Are you shure you want to delete ALL data?")){
+    if(confirm("Are you sure you want to delete ALL data?")){
         stopTicker()
         localStorage.clear();
-        initData();
+        initAllData();
+        loadPrestige();
         refreshText();
         startTicker();
     }

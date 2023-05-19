@@ -2,21 +2,34 @@ body{
     background: #000;
     color: #fff;
 }
-#mainValue{
+#mainValueContainer{
     font-size: 3em;
 }
 .buyButton{
     font-size: 1em;
-    width: 10em;
+    width: 12em;
     height: 2em;
 }
 .maxButton{
     font-size: 1em;
-    width: 5em;
+    width: 7em;
     height: 2em;
 }
 #resetButton{
     margin-top: 10em;
     background-color: rgb(194, 3, 3);
     border-color: #760404;
+}
+.firstPrestige{
+    background-color: #2538c3;
+    border-color: #16259a;
+}
+.secondPrestige{
+    background-color: #25c354;
+    border-color: #1fa347;
+}
+#infoBar{
+    background-color: #000;
+    border-color: white;
+    border-bottom: 0.1em solid;
 }
