@@ -14,6 +14,6 @@ function makeAddition(){
     tempValue=tempValue.plus(level6ValueP2);
     tempValue=tempValue.mul(multiplierValue);    
     mainValue=mainValue.plus(tempValue);
-    refreshText();
     saveData();
+    refreshText();
 }

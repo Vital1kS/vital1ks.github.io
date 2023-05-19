@@ -15,13 +15,14 @@ function buyMaxUpgrade(event){
     let level = event.currentTarget.level;
     let prestige = event.currentTarget.prestige;
     let costValue = getCost(level,prestige);
+    if(mainValue.gte(costValue)){
     while(mainValue.gte(costValue)){
         mainValue = mainValue.minus(costValue);
         costValue = increaseCost(level,prestige);
         increaseCount(level,prestige);
         increaseValue(level,prestige);
-        calculateIncome();
+        
+    }calculateIncome();
         refreshText();
-        costValue = getCost(level,prestige);
-    }
+}
 }

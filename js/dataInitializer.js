@@ -6,6 +6,7 @@ function initLayer1Data(){
     level4ValueP1 = new Decimal(0);
     level5ValueP1 = new Decimal(0);
     level6ValueP1 = new Decimal(0);
+    interval = new Decimal(1000);
 
     level1CountP1 = new Decimal(0);
     level2CountP1 = new Decimal(0);
@@ -56,9 +57,10 @@ function initPrestigeData(){
 
     prestigeLayerCount = 1;
     prestigeLayerCost = new Decimal("1e10");
+
+    selectedLayer = 1;
 }
 function initNeutralData(){
-    interval = new Decimal(1000);
     absoluteIncome=new Decimal(0);
     relativeIncome=new Decimal(0);
 }

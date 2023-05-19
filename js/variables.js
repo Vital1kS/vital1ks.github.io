@@ -57,3 +57,5 @@ let multiplierCount;
 
 let prestigeLayersCount;
 let prestigeLayersCost;
+
+let selectedLayer;

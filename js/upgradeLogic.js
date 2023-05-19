@@ -56,12 +56,12 @@ function increaseCost(level,prestige){
     }
     else if(prestige==2){
         switch (level){
-            case 1: level1CostP2 = level1CostP2.mul(1);return level1CostP2;
-            case 2: level2CostP2 = level2CostP2.mul(2);return level2CostP2;
-            case 3: level3CostP2 = level3CostP2.mul(3);return level3CostP2;
-            case 4: level4CostP2 = level4CostP2.mul(4);return level4CostP2;
-            case 5: level5CostP2 = level5CostP2.mul(5);return level5CostP2;
-            case 6: level6CostP2 = level6CostP2.mul(6);return level6CostP2;
+            case 1: level1CostP2 = level1CostP2.mul(1).mul(level1CountP2);return level1CostP2;
+            case 2: level2CostP2 = level2CostP2.mul(2).mul(level2CountP2);return level2CostP2;
+            case 3: level3CostP2 = level3CostP2.mul(3).mul(level3CountP2);return level3CostP2;
+            case 4: level4CostP2 = level4CostP2.mul(4).mul(level4CountP2);return level4CostP2;
+            case 5: level5CostP2 = level5CostP2.mul(5).mul(level5CountP2);return level5CostP2;
+            case 6: level6CostP2 = level6CostP2.mul(6).mul(level6CountP2);return level6CostP2;
         }
     }
 }

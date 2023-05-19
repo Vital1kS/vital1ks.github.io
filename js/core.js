@@ -1,12 +1,11 @@
 function initialize(){
-    initLayer1Data();
-    initLayer2Data();
-    initPrestigeData();
-    initNeutralData();
+    initAllData();
     initPrestigeLayers();
     loadData();
     initBuyButtonsP1();
     initBuyButtonsP2();
+    initSelectButtons();
+    selectLayer(selectedLayer);
     startTicker();
 }
 function initBuyButtonsP1(){
@@ -44,7 +43,7 @@ function initBuyButtonsP2(){
 function initPrestigeLayers(){
     let buyPrestigeButton = document.getElementById("prestigeLayerButton");
     buyPrestigeButton.addEventListener("click",buyPrestige);
-    let prestigeLayer2 = document.getElementById("prestigeLayer2");
+    let selectLayer2Button = document.getElementById("selectLayer2Button");
     paintPrestigeButton();
-    prestigeLayerCount > 1 ? prestigeLayer2.hidden=false :prestigeLayer2.hidden=true;
+    prestigeLayerCount > 1 ? selectLayer2Button.hidden=false :selectLayer2Button.hidden=true;
 }

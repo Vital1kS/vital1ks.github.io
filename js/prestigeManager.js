@@ -4,9 +4,10 @@ function buyPrestige(){
             mainValue = mainValue.minus(prestigeLayerCost);
             prestigeLayerCount++;
             prestigeLayerCost = prestigeLayerCost.mul("1e10");
-            let prestigeLayer2 = document.getElementById("prestigeLayer2");
-            prestigeLayerCount > 1 ? prestigeLayer2.hidden=false :prestigeLayer2.hidden=true;
+            let selectLayer2Button = document.getElementById("selectLayer2Button");
+            prestigeLayerCount > 1 ? selectLayer2Button.hidden=false :selectLayer2Button.hidden=true;
             if(prestigeLayerCount>1) initLayer1Data();
+            selectLayer(prestigeLayerCount);
             calculateIncome();
             saveData();
             paintPrestigeButton();

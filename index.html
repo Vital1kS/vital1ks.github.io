@@ -21,12 +21,14 @@
     <script src="js/dataInitializer.js"></script>
     <script src="js/multiplierManager.js"></script>
     <script src="js/prestigeManager.js"></script>
+    <script src="js/prestigeSelect.js"></script>
     <script src="js/core.js"></script>
 </head>
 <body onload="initialize()">
     <div id="infoBar" class="sticky-top">
         <div id="mainValueContainer" class = "p-2"><span id="mainValue">10.00</span> ₫</div>
         <div id="incomeValueContainer" class = "p-2"><span id="incomeValue">0.00</span> ₫/s</div>
+        <div id="prestigeBar" class="p-1"><button id="selectLayer1Button" class="firstPrestige">1 Function</button> <button id="selectLayer2Button" class="secondPrestige">2 Function</button></div>
     </div>
     <div id="prestigeLayer1">
         <div id="level1FunctionP1" class="p-1"><span id="level1TextP1" class="p-2 ">f(x) | Count: <span id="level1CountP1">0.00</span> | Value: <span id="level1ValueP1">0.00</span><br></span><button id="level1ButtonP1" class="buyButton firstPrestige">Cost: <span id="level1CostP1">10.00</span> ₫</button> <button id="level1MaxButtonP1" class="maxButton firstPrestige">Buy Max</button></div>
