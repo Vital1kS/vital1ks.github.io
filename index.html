@@ -28,7 +28,7 @@
     <div id="infoBar" class="sticky-top">
         <div id="mainValueContainer" class = "p-2"><span id="mainValue">10.00</span> ₫</div>
         <div id="incomeValueContainer" class = "p-2"><span id="incomeValue">0.00</span> ₫/s</div>
-        <div id="prestigeBar" class="p-1"><button id="selectLayer1Button" class="firstPrestige">1 Function</button> <button id="selectLayer2Button" class="secondPrestige">2 Function</button></div>
+        <div id="prestigeBar" class="p-1"><button id="selectLayer1Button" class="firstPrestige prestigeBarButton">1 Function</button> <button id="selectLayer2Button" class="secondPrestige prestigeBarButton">2 Function</button> <button id="selectDebugLayerButton" class="prestigeBarButton">Debug</button></div>
     </div>
     <div id="prestigeLayer1">
         <div id="level1FunctionP1" class="p-1"><span id="level1TextP1" class="p-2 ">f(x) | Count: <span id="level1CountP1">0.00</span> | Value: <span id="level1ValueP1">0.00</span><br></span><button id="level1ButtonP1" class="buyButton firstPrestige">Cost: <span id="level1CostP1">10.00</span> ₫</button> <button id="level1MaxButtonP1" class="maxButton firstPrestige">Buy Max</button></div>
@@ -47,6 +47,11 @@
         <div id="level5FunctionP2" class="p-1"><span id="level5TextP2" class="p-2 ">f(5^x) | Count: <span id="level5CountP2">0.00</span> | Value: <span id="level5ValueP2">0.00</span><br></span><button id="level5ButtonP2" class="buyButton secondPrestige">Cost: <span id="level5CostP2">100000.00</span> ₫</button> <button id="level5MaxButtonP2" class="maxButton secondPrestige">Buy Max</button></div>
         <div id="level6FunctionP2" class="p-1"><span id="level6TextP2" class="p-2 ">f(6^x) | Count: <span id="level6CountP2">0.00</span> | Value: <span id="level6ValueP2">0.00</span><br></span><button id="level6ButtonP2" class="buyButton secondPrestige">Cost: <span id="level6CostP2">1.00e+6</span> ₫</button> <button id="level6MaxButtonP2" class="maxButton secondPrestige">Buy Max</button></div>
         <div id="multiplier" class="p-1"><span id="multiplierText" class="p-2 ">Multiplier | Count: <span id=multiplierCount>0.00</span> | Value: x<span id="multiplierValue">1.00</span><br></span><button id="multiplierButton" class="buyButton secondPrestige">Cost: <span id="multiplierCost">100.00</span> ₫</button> <button id="multiplierMaxButton" class="maxButton secondPrestige">Buy Max</button></div>
+    </div>
+    
+    <div id="debugLayer">
+        <div id="freePrestige" class="p-1"><button onclick="unlockPrestige()">Open Next Prestige</button></div>
+        <div id="freeDongs" class="p-1"><input id="dongInput"> <button onclick="mainValue=mainValue.plus(dongInput.value)">Give Dongs</button></div>
     </div>
     <div class="p-2"><span id="prestigeText">Reset and unlock new functions</span><br><button id="prestigeLayerButton" class="secondPrestige">Cost: <span id="prestigeLayerCost">1.00e+10</span></button></div>
     <div id="reset"><button onclick="reset()" id="resetButton">Hard Reset</button></div>

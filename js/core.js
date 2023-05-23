@@ -7,6 +7,8 @@ function initialize(){
     initSelectButtons();
     selectLayer(selectedLayer);
     startTicker();
+    let mainValueObj = document.getElementById("mainValueContainer");
+    mainValueObj.ondblclick = () => {selectDebugLayerButton.hidden = false};
 }
 function initBuyButtonsP1(){
     for(let i =1; i<=6;i++){
@@ -46,4 +48,5 @@ function initPrestigeLayers(){
     let selectLayer2Button = document.getElementById("selectLayer2Button");
     paintPrestigeButton();
     prestigeLayerCount > 1 ? selectLayer2Button.hidden=false :selectLayer2Button.hidden=true;
+    selectDebugLayerButton.hidden = true;
 }
