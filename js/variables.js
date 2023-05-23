@@ -49,11 +49,35 @@ let level4CostP2;
 let level5CostP2;
 let level6CostP2;
 
+let level1ValueP3;
+let level2ValueP3;
+let level3ValueP3;
+let level4ValueP3;
+let level5ValueP3;
+let level6ValueP3;
+
+let level1CountP3;
+let level2CountP3;
+let level3CountP3;
+let level4CountP3;
+let level5CountP3;
+let level6CountP3;
+
+let level1CostP3;
+let level2CostP3;
+let level3CostP3;
+let level4CostP3;
+let level5CostP3;
+let level6CostP3;
 let prestigeMaxCount;
 
 let multiplierValue;
 let multiplierCost;
 let multiplierCount;
+
+let dividerValue;
+let dividerCost;
+let dividerCount;
 
 let prestigeLayersCount;
 let prestigeLayersCost;

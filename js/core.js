@@ -1,9 +1,10 @@
 function initialize(){
     initAllData();
-    initPrestigeLayers();
     loadData();
+    initPrestigeLayers();
     initBuyButtonsP1();
     initBuyButtonsP2();
+    initBuyButtonsP3();
     initSelectButtons();
     selectLayer(selectedLayer);
     startTicker();
@@ -42,11 +43,29 @@ function initBuyButtonsP2(){
     let multiplierMaxButton = document.getElementById("multiplierMaxButton");
     multiplierMaxButton.addEventListener("click",buyMaxMultiplier);
 }
+function initBuyButtonsP3(){
+    for(let i =1; i<=6;i++){
+        let levelButton = document.getElementById("level"+i+"ButtonP3");
+        levelButton.addEventListener("click",buyUpgrade);
+        levelButton.level = i;
+        levelButton.prestige = 3;
+        let levelMaxButton = document.getElementById("level"+i+"MaxButtonP3");
+        levelMaxButton.addEventListener("click",buyMaxUpgrade);
+        levelMaxButton.level = i;
+        levelMaxButton.prestige = 3;
+    }
+    let dividerButton = document.getElementById("dividerButton");
+    dividerButton.addEventListener("click",buyDivider);
+    let dividerMaxButton = document.getElementById("dividerMaxButton");
+    dividerMaxButton.addEventListener("click",buyMaxDivider);
+}
 function initPrestigeLayers(){
     let buyPrestigeButton = document.getElementById("prestigeLayerButton");
     buyPrestigeButton.addEventListener("click",buyPrestige);
     let selectLayer2Button = document.getElementById("selectLayer2Button");
+    let selectLayer3Button = document.getElementById("selectLayer3Button");
     paintPrestigeButton();
     prestigeLayerCount > 1 ? selectLayer2Button.hidden=false :selectLayer2Button.hidden=true;
+    prestigeLayerCount > 2 ? selectLayer3Button.hidden=false :selectLayer3Button.hidden=true;
     selectDebugLayerButton.hidden = true;
 }

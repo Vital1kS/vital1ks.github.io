@@ -1,5 +1,4 @@
 function initLayer1Data(){
-    mainValue = new Decimal(10);
     level1ValueP1 = new Decimal(0);
     level2ValueP1 = new Decimal(0);
     level3ValueP1 = new Decimal(0);
@@ -52,21 +51,49 @@ function initLayer2Data(){
     multiplierCost = new Decimal(200);
     multiplierCount = new Decimal(0);
 }
+function initLayer3Data(){
+    level1ValueP3 = new Decimal(0);
+    level2ValueP3 = new Decimal(0);
+    level3ValueP3 = new Decimal(0);
+    level4ValueP3 = new Decimal(0);
+    level5ValueP3 = new Decimal(0);
+    level6ValueP3 = new Decimal(0);
+
+    level1CountP3 = new Decimal(0);
+    level2CountP3 = new Decimal(0);
+    level3CountP3 = new Decimal(0);
+    level4CountP3 = new Decimal(0);
+    level5CountP3 = new Decimal(0);
+    level6CountP3 = new Decimal(0);
+
+    level1CostP3 = new Decimal(30);
+    level2CostP3 = new Decimal(300);
+    level3CostP3 = new Decimal(3000);
+    level4CostP3 = new Decimal(30000);
+    level5CostP3 = new Decimal(300000);
+    level6CostP3 = new Decimal(3000000);
+    
+    dividerValue = new Decimal(1);
+    dividerCost = new Decimal(300);
+    dividerCount = new Decimal(0);
+}
 function initPrestigeData(){
-    prestigeMaxCount = 2;
+    prestigeMaxCount = 3;
 
     prestigeLayerCount = 1;
-    prestigeLayerCost = new Decimal("1e10");
+    prestigeLayerCost = new Decimal("100000");
 
     selectedLayer = 1;
 }
 function initNeutralData(){
+    mainValue = new Decimal(10);
     absoluteIncome=new Decimal(0);
     relativeIncome=new Decimal(0);
 }
 function initAllData(){
     initLayer1Data();
     initLayer2Data();
+    initLayer3Data();
     initPrestigeData();
     initNeutralData();
 }

@@ -15,6 +15,9 @@ function saveData(){
     localStorage.setItem("multiplierValue",multiplierValue);
     localStorage.setItem("multiplierCount",multiplierCount);
     localStorage.setItem("multiplierCost",multiplierCost);
+    localStorage.setItem("dividerValue",dividerValue);
+    localStorage.setItem("dividerCount",dividerCount);
+    localStorage.setItem("dividerCost",dividerCost);
     localStorage.setItem("prestigeLayerCount",prestigeLayerCount);
     localStorage.setItem("prestigeLayerCost",prestigeLayerCost);
     localStorage.setItem("selectedLayer",selectedLayer);
@@ -71,32 +74,47 @@ function loadData(){
         mainValue = new Decimal(localStorage.getItem("mainValue"));
     }
     if(localStorage.getItem("multiplierValue") == null){
-        localStorage.setItem("multiplierValue",new Decimal(1000));
+        localStorage.setItem("multiplierValue",new Decimal(1));
     }else{
         multiplierValue = new Decimal(localStorage.getItem("multiplierValue"));
     }
     if(localStorage.getItem("multiplierCount") == null){
-        localStorage.setItem("multiplierCount",new Decimal(1000));
+        localStorage.setItem("multiplierCount",new Decimal(0));
     }else{
         multiplierCount = new Decimal(localStorage.getItem("multiplierCount"));
     }
     if(localStorage.getItem("multiplierCost") == null){
-        localStorage.setItem("multiplierCost",new Decimal(1000));
+        localStorage.setItem("multiplierCost",new Decimal(200));
     }else{
         multiplierCost = new Decimal(localStorage.getItem("multiplierCost"));
     }
+    if(localStorage.getItem("dividerValue") == null){
+        localStorage.setItem("dividerValue",new Decimal(1));
+    }else{
+        dividerValue = new Decimal(localStorage.getItem("dividerValue"));
+    }
+    if(localStorage.getItem("dividerCount") == null){
+        localStorage.setItem("dividerCount",new Decimal(0));
+    }else{
+        dividerCount = new Decimal(localStorage.getItem("dividerCount"));
+    }
+    if(localStorage.getItem("dividerCost") == null){
+        localStorage.setItem("dividerCost",new Decimal(300));
+    }else{
+        dividerCost = new Decimal(localStorage.getItem("dividerCost"));
+    }
     if(localStorage.getItem("prestigeLayerCount") == null){
-        localStorage.setItem("prestigeLayerCount",new Decimal(1000));
+        localStorage.setItem("prestigeLayerCount",new Decimal(1));
     }else{
         prestigeLayerCount = new Number(localStorage.getItem("prestigeLayerCount"));
     }
     if(localStorage.getItem("prestigeLayerCost") == null){
-        localStorage.setItem("prestigeLayerCost",new Decimal(1000));
+        localStorage.setItem("prestigeLayerCost",new Decimal(1e5));
     }else{
         prestigeLayerCost = new Decimal(localStorage.getItem("prestigeLayerCost"));
     }
     if(localStorage.getItem("selectedLayer") == null){
-        localStorage.setItem("selectedLayer",new Number(1000));
+        localStorage.setItem("selectedLayer",new Number(1));
     }else{
         selectedLayer = localStorage.getItem("selectedLayer");
     }
@@ -106,5 +124,7 @@ function loadData(){
 function loadPrestige(){
     let selectLayer2Button = document.getElementById("selectLayer2Button");
     prestigeLayerCount > 1 ? selectLayer2Button.hidden=false :selectLayer2Button.hidden=true;
+    prestigeLayerCount > 2 ? selectLayer3Button.hidden=false :selectLayer3Button.hidden=true;
+    selectDebugLayerButton.hidden = true;
     paintPrestigeButton();
 }

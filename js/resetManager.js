@@ -6,7 +6,6 @@ function reset(){
         loadPrestige();
         refreshText();
         startTicker();
-        selectDebugLayerButton.hidden = true;
         selectLayer(1);
     }
 }

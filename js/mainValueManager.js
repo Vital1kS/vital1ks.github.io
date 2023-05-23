@@ -12,7 +12,8 @@ function makeAddition(){
     tempValue=tempValue.plus(level4ValueP2);
     tempValue=tempValue.plus(level5ValueP2);
     tempValue=tempValue.plus(level6ValueP2);
-    tempValue=tempValue.mul(multiplierValue);    
+    tempValue=tempValue.mul(multiplierValue);
+    tempValue=tempValue.div(dividerValue);
     mainValue=mainValue.plus(tempValue);
     saveData();
     refreshText();
